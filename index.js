@@ -1,3 +1,14 @@
+document.getElementById('submit').addEventListener('click', function() {
+    const nameInput = document.getElementById('name');
+    const name = nameInput.value;
+    const namedisplay = document.getElementById('namedisplay');
+    namedisplay.textContent =`${name}`;
+    document.getElementById('main').style.display = "block";
+    document.getElementById('namedisplay').style.display = "flex";
+    document.getElementById('status').style.display = "block";
+    document.getElementById('enter').style.display = "none";
+    start();
+});
 const questions = [
     {
         ques: "Who was the king of the gods in Greek mythology?",
@@ -94,9 +105,11 @@ const questions = [
 const question = document.getElementById("question");
 const option = document.getElementById("options");
 const next = document.getElementById("next");
-
+const end = document.getElementById("end");
+const time = document.getElementById("time");
 let qno = 0;
 let score = 0;
+let timerInterval;
 
 function start() {
     qno = 0;
@@ -106,6 +119,7 @@ function start() {
 
 function showques() {
     reset();
+    next.innerHTML="Next";
     let q = questions[qno];
     let qnno = qno + 1;
     question.innerHTML = qnno + ". " + q.ques;
@@ -119,6 +133,18 @@ function showques() {
         }
         btn.addEventListener("click", select);
     });
+    let timeLeft = 31;
+    time.textContent = "Time left: " + timeLeft;
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        time.textContent = "Time left: " + timeLeft + " seconds";
+        
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            score=score-4;
+            select({ target: option.querySelector("[data-right='true']") });
+        }
+    }, 1000);
 }
 
 function reset() {
@@ -128,13 +154,15 @@ function reset() {
 }
 
 function select(e) {
+    clearInterval(timerInterval);
     const sbtn = e.target;
     const correct = sbtn.dataset.right === "true";
     if (correct) {
         sbtn.classList.add("correct");
-        score++;
+        score=score+4;
     } else {
         sbtn.classList.add("incorrect");
+        score--;
     }
     Array.from(option.children).forEach(btn => {
         if (btn.dataset.right === "true") {
@@ -143,23 +171,21 @@ function select(e) {
         btn.disabled = true;
     });
 
-    if (qno < questions.length-1) {
-        next.style.display = "block";
-     } else {
-       next.innerHTML="submit";
-       next.style.display = "block";
-       next.addEventListener("click",showscore);
-     }
+    if (qno < questions.length - 1) {
+        // next.style.display = "block";
+
+    } else {
+        next.innerHTML = "Submit";
+        // next.style.display = "block";
+        next.addEventListener("click", showscore);
+    }
     qno++;
-    function showscore()
-    {
-        question.innerHTML = "Quiz Over! Your Score: " + score + " out of " + questions.length;
-        next.style.display = "none";
+    function showscore() {
+        reset();
+        question.innerHTML = "Quiz Over! Your Score: " + score + " out of " + questions.length*4;
+        next.innerHTML="Re-Attempt";
+        next.addEventListener("click",start);
     }
 }
-next.addEventListener("click", function() {
-    showques();
-    next.style.display = "none";
-});
-
+next.addEventListener("click", showques);
 start();

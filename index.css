@@ -9,10 +9,19 @@ body{
     width: 100vw;
     height: 100vh;
 }
-#main{
+#namedisplay{
+    background-color: aliceblue;
+    color:rgb(2, 2, 49); 
+    padding:2vh;
+    font-size: 2vw;
+  width:fit-content;
+  margin-inline-start: 80vw;
+  margin-top: 4vh;
+}
+#enter,#main,#status{
     background-color: aliceblue;
     width: 70vw;
-    margin:20vh 15vw auto 15vw;
+    margin:10vh 15vw auto 15vw;
     border-radius: 10px;
     padding: 2rem;
 }
@@ -24,14 +33,23 @@ h1{
 }
 #question{
     padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
+    padding-bottom: 2.4vh;
     text-align: center;
+    font-size: 2.1vw;
 }
 #options{
     text-align: center;
 }
-.opt{
-    width:60vw;
+form{
+    text-align: center;
+    font-size:2vw;
+    margin-top: 3vh;
+}
+#submit{
+    margin-top: 3vh;
+}
+.opt,#name{
+    width:50vw;
     height: 5vh;
     font-weight: bold;
     margin-top: 1.5vh;
@@ -51,11 +69,15 @@ h1{
     background-color: rgb(182, 99, 99);
     color:black;
 }
-#nn{
-    text-align: center;
+#nn{  
     padding-top: 4vh;
 }
-#next{
+#en{
+    text-align: right;
+    position: relative;
+    bottom:5vh;
+}
+#next,#end,#submit{
     text-align: center;
     width: 10vw;
     height: 5vh;
@@ -65,3 +87,37 @@ h1{
     border-radius: 8px;
 }
 
+#time{
+    text-align: right;
+    font-size:1.5vw ;
+}
+#status{
+margin-top: 1.5vh;
+padding: 1rem;
+}
+.st{
+    text-align: left;
+    padding-left: 1vw;
+    width: 20vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    background-color:rgb(2, 2, 49);
+    color: white;
+    border-radius: 8px;
+    margin: 1vh 0.4vw;
+}
+
+.n{
+    display: inline;
+    background-color:rgb(2, 2, 49);
+    color: white;
+    border-radius: 8px;
+    padding:0.8vh 0.8vw;
+    margin:auto 1vw;
+}
+#no{
+    text-align: center;
+}
+#aur{
+    text-align: center;
+}
