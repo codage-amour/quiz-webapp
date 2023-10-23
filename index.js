@@ -114,6 +114,7 @@ let qno = 0;
 let score = 0;
 let timerInterval;
 let selectedAnswers = new Array(questions.length).fill(null);
+let submitted = false;
 
 const buttons = document.querySelectorAll('.n');
 buttons.forEach(button => {
@@ -205,33 +206,38 @@ function resetNavigationButtons() {
 }
 
 next.addEventListener("click", function () {
-    // if (!submitted) {
         if (qno < questions.length - 1) {
             qno++;
             showques();
         } else {
           next.style.display="none";
         }
-    // }
     const nextButtonId = `q${qno}`;
     const nextButton = document.getElementById(nextButtonId);
     nextButton.style.backgroundColor = "purple";
 });
 
 sub.addEventListener("click", function () {
-    // if (!submitted) {
+    if (!submitted) {
+        if (selectedAnswers[qno] === null) {
+            alert("Please select an option before submitting.");
+            return;
+        }
+        
         if (qno < questions.length - 1) {
             qno++;
             showques();
         } else {
             showques();
         }
-    // }
+        submitted = true;
+    }
     calculate();
     const nextButtonId = `q${qno}`;
     const nextButton = document.getElementById(nextButtonId);
     nextButton.style.backgroundColor = "green";
 });
+
 
 function calculate() {
     const currentQuestion = questions[qno];
