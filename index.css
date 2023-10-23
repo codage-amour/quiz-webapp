@@ -57,27 +57,19 @@ form{
     border-radius: 5px;
     cursor: pointer;
 }
-.opt:hover{
+.opt:hover,.select{
     background-color: black;
     color:white
-}
-.correct{
-    background-color: rgb(119, 215, 119);
-    color:black;
-}
-.incorrect{
-    background-color: rgb(182, 99, 99);
-    color:black;
 }
 #nn{  
     padding-top: 4vh;
 }
-#en{
-    text-align: right;
+/* #en{
+    text-align:right;
     position: relative;
     bottom:5vh;
-}
-#next,#end,#submit{
+} */
+#next,#end,#submit,#sub,#re{
     text-align: center;
     width: 10vw;
     height: 5vh;
@@ -109,7 +101,7 @@ padding: 1rem;
 
 .n{
     display: inline;
-    background-color:rgb(2, 2, 49);
+    background-color:red;
     color: white;
     border-radius: 8px;
     padding:0.8vh 0.8vw;
@@ -121,3 +113,4 @@ padding: 1rem;
 #aur{
     text-align: center;
 }
+
