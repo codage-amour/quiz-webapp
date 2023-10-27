@@ -10,7 +10,8 @@ else
     document.getElementById('main').style.display = "block";
     document.getElementById('namedisplay').style.display = "flex";
     document.getElementById('status').style.display = "block";
-    document.getElementById('enter').style.display = "none";}
+    document.getElementById('enter').style.display = "none";
+start();}
 });
 const questions = [
     {
@@ -109,12 +110,12 @@ const option = document.getElementById("options");
 const next = document.getElementById("next");
 const sub = document.getElementById("sub");
 const end = document.getElementById("end");
+const re= document.getElementById("re");
 const time = document.getElementById("time");
 let qno = 0;
 let score = 0;
 let timerInterval;
 let selectedAnswers = new Array(questions.length).fill(null);
-let submitted = false;
 
 const buttons = document.querySelectorAll('.n');
 buttons.forEach(button => {
@@ -206,46 +207,39 @@ function resetNavigationButtons() {
 }
 
 next.addEventListener("click", function () {
+    // if (!submitted) {
         if (qno < questions.length - 1) {
             qno++;
             showques();
         } else {
           next.style.display="none";
         }
+    // }
     const nextButtonId = `q${qno}`;
     const nextButton = document.getElementById(nextButtonId);
     nextButton.style.backgroundColor = "purple";
 });
 
 sub.addEventListener("click", function () {
-    if (!submitted) {
-        if (selectedAnswers[qno] === null) {
-            alert("Please select an option before submitting.");
-            return;
-        }
-        
+    // if (!submitted) {
         if (qno < questions.length - 1) {
             qno++;
             showques();
         } else {
             showques();
         }
-        submitted = true;
-    }
+    // }
     calculate();
     const nextButtonId = `q${qno}`;
     const nextButton = document.getElementById(nextButtonId);
     nextButton.style.backgroundColor = "green";
 });
 
-
 function calculate() {
     const currentQuestion = questions[qno];
     const selectedAnswerIndex = selectedAnswers[qno];
-
     if (selectedAnswerIndex !== null) {
         const selectedAnswer = currentQuestion.ans[selectedAnswerIndex];
-
         if (selectedAnswer.right) {
             score += 4;
         } else{
@@ -260,19 +254,13 @@ function show() {
     clearInterval(timerInterval);
     calculate();
     question.innerHTML = `Quiz Over! Your Score: ${score} out of ${questions.length * 4}`;
-
-    next.innerHTML = "Re-Attempt";
-    next.style.display = "block";
+    next.style.display = "none";
     time.style.display = "none";
     sub.style.display = "none";
     end.style.display = "none";
     option.style.display = "none";
-
-    next.addEventListener("click", function () {
-        selectedAnswers[qno] = null;
-        resetButtonColors();
-        resetNavigationButtons();
-        start();
+    re.style.display = "block";
+    re.addEventListener("click",function(){
+        location.reload();
     });
 }
-start();

@@ -9,6 +9,21 @@ body{
     width: 100vw;
     height: 100vh;
 }
+#enter,#main,#status{
+    background-color: aliceblue;
+    width: 70vw;
+    margin:10vh 15vw auto 15vw;
+    border-radius: 10px;
+    padding: 2rem;
+}
+form{
+    text-align: center;
+    font-size:2vw;
+    margin-top: 3vh;
+}
+#submit{
+    margin-top: 3vh;
+}
 #namedisplay{
     background-color: aliceblue;
     color:rgb(2, 2, 49); 
@@ -18,12 +33,9 @@ body{
   margin-inline-start: 80vw;
   margin-top: 4vh;
 }
-#enter,#main,#status{
-    background-color: aliceblue;
-    width: 70vw;
-    margin:10vh 15vw auto 15vw;
-    border-radius: 10px;
-    padding: 2rem;
+#time{
+    text-align: right;
+    font-size:1.5vw ;
 }
 h1{
     border-bottom: 2px solid black;
@@ -39,14 +51,6 @@ h1{
 }
 #options{
     text-align: center;
-}
-form{
-    text-align: center;
-    font-size:2vw;
-    margin-top: 3vh;
-}
-#submit{
-    margin-top: 3vh;
 }
 .opt,#name{
     width:50vw;
@@ -64,11 +68,6 @@ form{
 #nn{  
     padding-top: 4vh;
 }
-/* #en{
-    text-align:right;
-    position: relative;
-    bottom:5vh;
-} */
 #next,#end,#submit,#sub,#re{
     text-align: center;
     width: 10vw;
@@ -78,27 +77,13 @@ form{
     color: white;
     border-radius: 8px;
 }
-
-#time{
-    text-align: right;
-    font-size:1.5vw ;
-}
 #status{
 margin-top: 1.5vh;
 padding: 1rem;
 }
-.st{
-    text-align: left;
-    padding-left: 1vw;
-    width: 20vw;
-    height: 5vh;
-    font-size: 1.5vw;
-    background-color:rgb(2, 2, 49);
-    color: white;
-    border-radius: 8px;
-    margin: 1vh 0.4vw;
+#no{
+    text-align: center;
 }
-
 .n{
     display: inline;
     background-color:red;
@@ -107,10 +92,3 @@ padding: 1rem;
     padding:0.8vh 0.8vw;
     margin:auto 1vw;
 }
-#no{
-    text-align: center;
-}
-#aur{
-    text-align: center;
-}
-
